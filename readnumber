@@ -1,1 +1,68 @@
+__author__ = 'Admin'
+# -*- coding: utf-8 -*-
+def bachuso(n):
+    chuso = ['Khong', 'mot', 'hai', 'ba', 'bon', 'nam', 'sau', 'bay', 'tam', 'chin']
+    Doc = ''
+    tram = n // 100
+    chuc = n // 10 % 10
+    donvi = n % 10
 
+    if tram > 0:
+        Doc += chuso[tram] + ' ' + 'tram'
+        if chuc > 0:
+            if chuc == 1:
+                if donvi == 0:
+                    Doc += ' ' + 'muoif'
+                elif donvi == 5:
+                    Doc += ' ' + 'muoif' + ' ' + 'lam'
+                else:
+                    Doc += ' ' + 'muoif' + ' ' + chuso[donvi]
+            else:
+                if donvi == 0:
+                    Doc += ' ' + chuso[chuc] + ' ' + 'muoi'
+                elif donvi ==5:
+                    Doc += ' ' + chuso[chuc] + ' ' + 'lam'
+                elif donvi == 1:
+                    Doc += ' ' + chuso[chuc] + ' ' + 'mots'
+                else:
+                    Doc += ' ' + chuso[chuc] + ' ' + chuso[donvi]
+
+        elif chuc == 0:
+            if donvi > 0:
+                Doc += ' ' + 'le' + ' ' + chuso[donvi]
+    else:
+        if chuc > 0:
+            if chuc == 1:
+                if donvi == 0:
+                    Doc += 'muoif'
+                elif donvi == 5:
+                    Doc += 'muoif' + ' ' + 'lam'
+                else:
+                    Doc += 'muoif' + chuso[donvi]
+            else:
+                if donvi == 0:
+                    Doc += chuso[chuc] + ' ' + 'muoi'
+                elif donvi == 5:
+                    Doc += chuso[chuc] + ' ' + 'lam'
+                elif donvi == 1:
+                    Doc += chuso[chuc] + ' ' + 'mots'
+                else:
+                    Doc += chuso[chuc] + ' ' + chuso[donvi]
+        else:
+            Doc += chuso[donvi]
+
+    return Doc
+
+def readnumber(n):
+    Doc = ''
+    ngan = n // 1000
+    trieu = n // 1000000
+    ty = n // 1000000000
+
+    if ngan > 0:
+        Doc += bachuso(ngan) + ' ' + 'ngan' + ' ' + bachuso(n - ngan * 1000)
+        if trieu > 0:
+            Doc += bachuso(trieu) + 'trieu'
+
+    return Doc
+print(readnumber(98020))
