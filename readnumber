@@ -1,6 +1,7 @@
 __author__ = 'Admin'
 # -*- coding: utf-8 -*-
-def bachuso(n):
+while True:
+    n = int(input('Nhap n: '))
     chuso = ['Khong', 'mot', 'hai', 'ba', 'bon', 'nam', 'sau', 'bay', 'tam', 'chin']
     Doc = ''
     tram = n // 100
@@ -51,18 +52,4 @@ def bachuso(n):
         else:
             Doc += chuso[donvi]
 
-    return Doc
-
-def readnumber(n):
-    Doc = ''
-    ngan = n // 1000
-    trieu = n // 1000000
-    ty = n // 1000000000
-
-    if ngan > 0:
-        Doc += bachuso(ngan) + ' ' + 'ngan' + ' ' + bachuso(n - ngan * 1000)
-        if trieu > 0:
-            Doc += bachuso(trieu) + 'trieu'
-
-    return Doc
-print(readnumber(98020))
+    print(Doc)
