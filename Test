@@ -1,0 +1,45 @@
+__author__ = 'Admin'
+
+A = '20+3*4-(5+6)/7'
+
+Infix = []
+Postfix = []
+Stack = []
+
+def prec(i):
+    if i is '+' or i is '-':
+        return 1
+    elif i is '*' or i is '/':
+        return 2
+
+def oper(i):
+    if i is '+' or i is '-' or i is '*' or i is '/':
+        return 'operator'
+    elif i is '(':
+        return 'leftbracket'
+    elif i is ')':
+        return 'rightbraket'
+    else:
+        return 'operand'
+
+for i in A:
+    Infix.append(i)
+print(Infix)
+
+for j in Infix:
+    if j is 'operand':
+        Postfix.append(j)
+    elif j is 'operator':
+        if len(Stack) == 0:
+            Stack.append(j)
+        else:
+            if oper(Stack[-1]) is not 'operator':
+                Stack.append(j)
+            else:
+                while oper(Stack[-1]) is 'operator' and prec(Stack[-1]) >= prec(j):
+                    Postfix.append(Stack.pop())
+                Stack.append(j)
+    elif j is 'leftbracket':
+        Stack.append(j)
+    elif j is 'rightbracket':
+        
